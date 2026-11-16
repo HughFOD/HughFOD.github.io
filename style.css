@@ -1,0 +1,98 @@
+:root{
+  --bg:#1f3bff; --ink:#fff6dc; --hot:#d9ff3c; --pop:#ff5a36;
+  --dim:rgba(255,246,220,.62); --line:rgba(255,246,220,.22);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:17px/1.6 "Space Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit}
+.wrap{max-width:860px;width:100%;margin:0 auto;padding:0 24px}
+main{flex:1}
+.label{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin:0 0 20px}
+
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:26px 0;
+  font-family:"Space Mono",monospace;font-size:13px}
+nav .mark{text-decoration:none;font-weight:700}
+nav .tabs{display:flex;gap:4px;flex-wrap:wrap}
+nav .tabs a{text-decoration:none;color:var(--ink);padding:6px 12px;border-radius:999px;opacity:.75}
+nav .tabs a:hover{opacity:1;background:rgba(255,246,220,.1)}
+nav .tabs a.on{background:var(--hot);color:#111;opacity:1}
+
+h1{font-size:clamp(48px,9vw,96px);font-weight:700;line-height:.95;letter-spacing:-.04em;margin:0 0 28px}
+h1 span{color:var(--hot)}
+h2.page{font-size:clamp(40px,7vw,72px);font-weight:700;line-height:1;letter-spacing:-.04em;margin:0 0 18px}
+.intro{color:var(--dim);font-size:19px;max-width:34em;margin:0 0 48px}
+.lede{font-size:21px;line-height:1.5;max-width:34em;margin:0 0 34px}
+.lede em{font-style:normal;background:var(--hot);color:#111;padding:0 5px;border-radius:3px}
+.lede a{text-decoration:none}
+.lede a em::after{content:" ↗";font-size:.7em}
+.lede a:hover em{background:var(--ink)}
+.hero{padding:90px 0 80px}
+.pagehead{padding:60px 0 0}
+
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 20px;border-radius:999px;text-decoration:none;
+  font:700 13px "Space Mono",monospace;border:1.5px solid var(--ink);transition:background .15s,color .15s}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--hot);border-color:var(--hot);color:#111}
+
+section{padding:0 0 64px}
+
+.proj{display:grid;grid-template-columns:48px 1fr auto;gap:6px 18px;padding:24px 0;
+  border-bottom:1px solid var(--line);text-decoration:none;align-items:baseline}
+.proj:first-of-type{border-top:1px solid var(--line)}
+.proj .n{font-family:"Space Mono",monospace;font-size:13px;color:var(--dim)}
+.proj h3{margin:0;font-size:26px;font-weight:700;letter-spacing:-.02em;transition:color .15s}
+.proj .meta{font-family:"Space Mono",monospace;font-size:12px;color:var(--dim);white-space:nowrap}
+.proj p{grid-column:2 / 4;margin:0;color:var(--dim);max-width:38em}
+a.proj:hover h3{color:var(--hot)}
+a.proj h3::after{content:" ↗";font-size:.7em;color:var(--pop)}
+.wip{color:var(--pop)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1.5px solid var(--line);border-radius:14px;padding:22px;text-decoration:none;display:block}
+.card h3{margin:0 0 6px;font-size:20px}
+.card p{margin:0;color:var(--dim);font-size:15px}
+a.card:hover{border-color:var(--hot)}
+a.card:hover h3{color:var(--hot)}
+
+.prose{max-width:36em;font-size:19px}
+.cards.four{grid-template-columns:repeat(4,1fr)}
+.tl{border-top:1px solid var(--line)}
+.tl .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.tl h3{margin:0;font-size:21px;letter-spacing:-.01em}
+.tl p{margin:2px 0 0;color:var(--dim);font-size:15px}
+.tl .when{font-family:"Space Mono",monospace;font-size:12px;color:var(--hot);white-space:nowrap}
+.prose p{margin:0 0 18px}
+.prose .aside{color:var(--dim);font-size:17px}
+
+.links{border-top:1px solid var(--line)}
+.links a{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);
+  text-decoration:none;font-size:clamp(24px,4vw,34px);font-weight:700;letter-spacing:-.02em}
+.links a span{font:400 13px "Space Mono",monospace;color:var(--dim)}
+.links a:hover{color:var(--hot)}
+
+.empty{border:1.5px dashed var(--line);border-radius:14px;padding:40px 24px;text-align:center;color:var(--dim);
+  font-family:"Space Mono",monospace;font-size:13px}
+
+footer{padding:30px 0 50px;font-family:"Space Mono",monospace;font-size:12px;color:var(--dim);border-top:1px solid var(--line);margin-top:20px}
+
+@media (max-width:680px){
+  .cards,.cards.four{grid-template-columns:1fr 1fr}
+  .tl .row{flex-direction:column;gap:4px}
+  .proj{grid-template-columns:36px 1fr}
+  .proj .meta,.proj p{grid-column:2}
+  .hero{padding:50px 0 60px}
+  nav{flex-direction:column;align-items:flex-start;gap:10px;padding:20px 0}
+  nav .tabs{gap:2px;margin-left:-8px}
+  nav .tabs a{padding:5px 8px;font-size:12px}
+  .pagehead{padding:30px 0 0}
+}
+
+.lap{padding:10px 0 60px}
+.circuit{width:100%;max-width:640px;height:auto;display:block;margin:0 auto;overflow:visible}
+.circuit .kerb{fill:none;stroke:var(--ink);stroke-opacity:.14;stroke-width:3;stroke-linejoin:round}
+.circuit text{font:500 19px "Space Grotesk",sans-serif;fill:var(--ink)}
+.circuit .car{fill:var(--hot)}
+.lapcap{text-align:center;font-family:"Space Mono",monospace;font-size:12px;color:var(--dim);margin:8px 0 0}
