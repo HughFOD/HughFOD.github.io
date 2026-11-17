@@ -116,3 +116,15 @@ footer{padding:30px 0 50px;font-family:"Space Mono",monospace;font-size:12px;col
 @media (max-width:640px){
   .l2{grid-template-columns:1fr;gap:0}
 }
+
+.moment{cursor:pointer;outline:none}
+.moment .dot{fill:var(--pop)}
+.moment .pulse{fill:none;stroke:var(--pop);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:pulse 2s ease-out infinite}
+@keyframes pulse{from{transform:scale(.8);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.moment .tip{opacity:0;pointer-events:none;transition:opacity .2s}
+.moment:hover .tip,.moment:focus .tip,.moment.on .tip{opacity:1}
+.moment .tip rect{fill:#111a66;stroke:var(--pop);stroke-width:1.5}
+.moment .tip text{fill:var(--ink);font-family:"Space Grotesk",sans-serif}
+.moment .tip .t1{font-size:16px;font-weight:700;fill:var(--pop)}
+.moment .tip .t2{font-size:13px}
+@media (prefers-reduced-motion:reduce){.moment .pulse{animation:none}}

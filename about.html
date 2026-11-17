@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -45,6 +45,15 @@
       <path class="body" d="M -13 -3.2 L -4 -4.6 L 4 -3 L 15.5 -1.2 L 15.5 1.2 L 4 3 L -4 4.6 L -13 3.2 Z"/>
       <ellipse class="cockpit" cx="-1" cy="0" rx="3" ry="1.8"/>
     </g>
+    <g class="moment" transform="translate(777.8 374.2)" tabindex="0" aria-label="Copse, 2021: Hamilton and Verstappen collide on lap 1">
+      <circle class="pulse" r="9"/>
+      <circle class="dot" r="6"/>
+      <g class="tip" transform="translate(-16 0)">
+        <rect x="-262" y="-30" width="252" height="54" rx="8"/>
+        <text x="-248" y="-8" class="t1">Copse · 2021</text>
+        <text x="-248" y="13" class="t2">Lap 1: Hamilton and Verstappen collide</text>
+      </g>
+    </g>
   </svg>
   <p class="lapcap">silverstone</p>
 </section>
@@ -75,6 +84,9 @@
     t = (t + dt * .00008 * boost) % 1; placeCar(t);
     requestAnimationFrame(tick);
   }
+  const mo = document.querySelector('.moment');
+  mo.addEventListener('click', e => { e.stopPropagation(); mo.classList.toggle('on'); });
+  document.addEventListener('click', () => mo.classList.remove('on'));
   if (reduce){ placeCar(0); }
   else requestAnimationFrame(tick);
 })();
