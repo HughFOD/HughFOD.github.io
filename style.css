@@ -92,7 +92,14 @@ footer{padding:30px 0 50px;font-family:"Space Mono",monospace;font-size:12px;col
 
 .lap{padding:10px 0 60px}
 .circuit{width:100%;max-width:640px;height:auto;display:block;margin:0 auto;overflow:visible}
-.circuit .kerb{fill:none;stroke:var(--ink);stroke-opacity:.14;stroke-width:3;stroke-linejoin:round}
+.circuit .kerb{fill:none;stroke:var(--ink);stroke-opacity:.09;stroke-width:30;stroke-linejoin:round;stroke-linecap:round}
 .circuit text{font:500 19px "Space Grotesk",sans-serif;fill:var(--ink)}
-.circuit .car{fill:var(--hot)}
+.circuit .car .body,.circuit .car .wing{fill:var(--hot)}
+.circuit .car .tyre{fill:#111a66}
+.circuit .car .cockpit{fill:#111a66}
 .lapcap{text-align:center;font-family:"Space Mono",monospace;font-size:12px;color:var(--dim);margin:8px 0 0}
+
+.now{border:1.5px solid var(--line);border-radius:14px;padding:22px 24px;max-width:36em}
+.now .label{margin:0 0 12px}
+.now-row{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:16px}
+.now-row span:first-child{font-family:"Space Mono",monospace;font-size:12px;color:var(--dim);padding-top:3px;text-transform:lowercase}
