@@ -103,3 +103,16 @@ footer{padding:30px 0 50px;font-family:"Space Mono",monospace;font-size:12px;col
 .now .label{margin:0 0 12px}
 .now-row{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:16px}
 .now-row span:first-child{font-family:"Space Mono",monospace;font-size:12px;color:var(--dim);padding-top:3px;text-transform:lowercase}
+
+@media (max-width:680px){ .hero .label{letter-spacing:.03em;font-size:10.5px} }
+
+/* 2: paragraph | currently, track below */
+.l2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+.l2 section{padding-bottom:24px}
+.l2 .prose{font-size:18px}
+.l2-track{padding-top:10px}
+.l2-track .circuit{max-width:720px}
+
+@media (max-width:640px){
+  .l2{grid-template-columns:1fr;gap:0}
+}
