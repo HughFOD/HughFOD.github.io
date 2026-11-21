@@ -140,3 +140,8 @@ footer{padding:30px 0 50px;font-family:"Space Mono",monospace;font-size:12px;col
 .circuit .here{font:400 14px "Space Mono",monospace;fill:var(--hot)}
 .proj .notes{grid-column:2;justify-self:start;position:relative;z-index:1;margin-top:8px;font-family:"Space Mono",monospace;font-size:12px;color:var(--hot);text-decoration:none;border-bottom:1px solid transparent}
 .proj .notes:hover{border-bottom-color:var(--hot)}
+.tracks{display:flex;justify-content:center;gap:8px;margin:14px 0 0;flex-wrap:wrap}
+.tracks button{font:400 12px "Space Mono",monospace;color:var(--dim);background:none;border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.tracks button:hover{color:var(--ink);border-color:var(--ink)}
+.tracks button[aria-pressed="true"]{background:var(--hot);border-color:var(--hot);color:#111a66}
+.moment[hidden]{display:none}
