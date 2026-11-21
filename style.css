@@ -146,14 +146,3 @@ footer{padding:30px 0 50px;font-family:"Space Mono",monospace;font-size:12px;col
 .tracks button[aria-pressed="true"]{background:var(--hot);border-color:var(--hot);color:#111a66}
 .moment[hidden]{display:none}
 .circuit .car2 .body,.circuit .car2 .wing{fill:var(--pop)}
-.circuit .car .num{display:none;font:700 6px "Space Mono",monospace;fill:#111a66;text-anchor:middle;dominant-baseline:central}
-.circuit.replaying .car .num{display:inline}
-.circuit.replaying .car:not(.car2) .body,.circuit.replaying .car:not(.car2) .wing{fill:#c9ced6}
-.circuit.replaying .car2 .body{fill:#16206b}
-.circuit.replaying .car2 .wing{fill:#e8343a}
-.circuit.replaying .car2 .num{fill:#fff6dc}
-.circuit .replay-skid{stroke-width:4;stroke-dasharray:2 3;opacity:.8}
-.replaycap{text-align:center;margin:10px 0 0;font-size:14px;color:var(--ink);opacity:0;transition:opacity .3s;min-height:1.4em}
-.replaycap b{color:var(--pop);margin-right:6px}
-.lap.replaying .replaycap{opacity:1}
-.circuit.replaying .moment .tip{opacity:0}
