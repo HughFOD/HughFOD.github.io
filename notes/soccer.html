@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes: Today's Soccer Bets · Hugh O'Donnell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=7">
+<meta name="description" content="Hugh O'Donnell, data scientist. Models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hugh O'Donnell">
+<meta property="og:title" content="Hugh O'Donnell">
+<meta property="og:description" content="Data scientist building models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:image" content="https://hughod.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://hughod.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.post{max-width:660px}
+.post h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.03em;margin:8px 0 14px}
+.post .sub{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--dim);margin:0 0 40px}
+.post h3{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--hot);margin:40px 0 10px;font-weight:400}
+.post p,.post li{font-size:18px;line-height:1.65;margin:0 0 14px}
+.post ul{padding-left:20px;margin:0 0 14px}
+.post .yours{border-left:3px dashed var(--hot);padding:4px 0 4px 16px;opacity:.85;font-style:italic}
+.post .links{display:flex;gap:12px;flex-wrap:wrap;margin:44px 0 0}
+.post .back{margin:28px 0 0;font-family:"Space Mono",monospace;font-size:12px}.post .back a{color:var(--dim)}
+.post code{font-family:"Space Mono",monospace;font-size:15px}
+</style></head>
+<body>
+<div class="wrap"><nav><a class="mark" href="../index.html">hughod.com</a><span class="tabs"><a href="../index.html">home</a><a href="../projects.html" class="on">projects</a><a href="../about.html">about</a><a href="../contact.html">contact</a></span></nav></div>
+<main class="wrap">
+<article class="post pagehead">
+  <p class="label">Notes · Project 01</p>
+  <h2>Today's Soccer Bets</h2>
+  <p class="sub">Python · updated every morning · 4 min read</p>
+
+  <h3>The question</h3>
+  <p>Sportsbooks and prediction markets all price the same matches. If you strip out each site's cut and average them, you get a fair chance for every result. When one site pays more than that, is it a real opportunity or just noise?</p>
+
+  <h3>Why it's useful</h3>
+  <p>Betting odds are prices, like stock prices. If the markets are efficient, nobody should be able to find bets that pay more than they should. Testing that tells you how much to trust the odds, and it's the same question finance asks about mispriced assets.</p>
+
+  <h3>What I did</h3>
+  <ul><li>Built a site that pulls odds every morning from five US sportsbooks and two prediction markets (Kalshi and Polymarket).</li><li>It removes each site's cut, including Kalshi and Polymarket's trading fees, and averages them into one fair price.</li><li>It lists any bet paying more than 2% above the fair price, and saves it at the price shown.</li><li>It settles every listed bet from the final score, so the record can't be edited after the fact.</li><li>Tested the idea on 52,841 past matches from 2000 to 2026.</li></ul>
+
+  <h3>What I found</h3>
+  <p>The odds are accurate, but off in one consistent way: favorites win a little more often than their odds say, and long shots a little less. Betting every long shot lost about $27 per $100.</p><p>Prices flagged as 2%+ better than the fair price were still better at kick-off 73% of the time, across 16,328 matches. That suggests the gaps are real, not noise.</p><p>A model built only from past scores couldn't beat the odds.</p>
+
+  <h3>What surprised me</h3>
+  <p>How hard it is to beat the odds. A model built only from past scores couldn't do it, because the markets already price in what the scores say. The only gaps that held up came from comparing the sites against each other.</p>
+
+  <h3>What I'd do next</h3>
+  <p>Keep tracking every pick through a full season, to see whether the record holds up as more bets settle and the 95% ranges tighten.</p>
+
+  <div class="btns" style="margin-top:44px"><a class="btn solid" href="https://todayssoccerbets.com">See the live site</a><a class="btn" href="https://github.com/HughFOD/soccer-markets">Code on GitHub</a></div>
+  <p class="back"><a href="../projects.html">← All projects</a></p>
+</article>
+</main>
+<div class="wrap"><footer>© 2026 Hugh O'Donnell</footer></div>
+</body>
+</html>

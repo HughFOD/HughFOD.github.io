@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes: Hudson River Gauge Check · Hugh O'Donnell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=7">
+<meta name="description" content="Hugh O'Donnell, data scientist. Models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hugh O'Donnell">
+<meta property="og:title" content="Hugh O'Donnell">
+<meta property="og:description" content="Data scientist building models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:image" content="https://hughod.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://hughod.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.post{max-width:660px}
+.post h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.03em;margin:8px 0 14px}
+.post .sub{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--dim);margin:0 0 40px}
+.post h3{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--hot);margin:40px 0 10px;font-weight:400}
+.post p,.post li{font-size:18px;line-height:1.65;margin:0 0 14px}
+.post ul{padding-left:20px;margin:0 0 14px}
+.post .yours{border-left:3px dashed var(--hot);padding:4px 0 4px 16px;opacity:.85;font-style:italic}
+.post .links{display:flex;gap:12px;flex-wrap:wrap;margin:44px 0 0}
+.post .back{margin:28px 0 0;font-family:"Space Mono",monospace;font-size:12px}.post .back a{color:var(--dim)}
+.post code{font-family:"Space Mono",monospace;font-size:15px}
+</style></head>
+<body>
+<div class="wrap"><nav><a class="mark" href="../index.html">hughod.com</a><span class="tabs"><a href="../index.html">home</a><a href="../projects.html" class="on">projects</a><a href="../about.html">about</a><a href="../contact.html">contact</a></span></nav></div>
+<main class="wrap">
+<article class="post pagehead">
+  <p class="label">Notes · Project 02</p>
+  <h2>Hudson River Gauge Check</h2>
+  <p class="sub">Python · 2022–2025 data · 4 min read</p>
+
+  <h3>The question</h3>
+  <p>Can I trust a river gauge, and can I predict it? Above Troy, the upper Hudson and the Mohawk join and flow past a third gauge at Green Island. Water is conserved, so the three gauges should agree. If they don't, one of them is wrong.</p>
+
+  <h3>Why it's useful</h3>
+  <p>USGS river gauges feed flood warnings, water supply planning and research. If a gauge drifts, everything built on it is off too, and nobody may notice for months. Forecasting flow a few hours ahead also helps with flood planning.</p>
+
+  <h3>What I did</h3>
+  <ul>
+    <li>Pulled four years of 15-minute readings from three USGS gauges.</li>
+    <li>Flagged bad data: ice, stuck sensors, spikes, gaps and duplicates.</li>
+    <li>Checked that flow in equals flow out, allowing for the time water takes to travel.</li>
+    <li>Built models to forecast Green Island flow 6, 12 and 24 hours ahead, and compared them with just assuming nothing changes.</li>
+  </ul>
+
+  <h3>What I found</h3>
+  <p>On a typical day the gauges agree within 5%. From December 2022 to November 2023 they were off by about 2,600 cubic feet per second, which points to a calibration error at one gauge.</p>
+  <p>The best forecast was 20% more accurate than assuming nothing changes, 12 hours ahead.</p>
+
+  <h3>What surprised me</h3>
+  <p>The basic sensor checks missed a year-long problem completely. Every reading looked normal on its own. It only showed up when I checked the three gauges against each other.</p>
+
+  <h3>What I'd do next</h3>
+  <p>Run the same checks at other river junctions, to see how often gauges drift without anyone noticing.</p>
+
+  <div class="btns" style="margin-top:44px"><a class="btn solid" href="https://hughod.com/hudson-flow/">See the full project</a><a class="btn" href="https://github.com/HughFOD/hudson-flow">Code on GitHub</a></div>
+  <p class="back"><a href="../projects.html">← All projects</a></p>
+</article>
+</main>
+<div class="wrap"><footer>© 2026 Hugh O'Donnell</footer></div>
+</body>
+</html>

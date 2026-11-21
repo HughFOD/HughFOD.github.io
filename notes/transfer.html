@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes: Transfer value model · Hugh O'Donnell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=7">
+<meta name="description" content="Hugh O'Donnell, data scientist. Models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hugh O'Donnell">
+<meta property="og:title" content="Hugh O'Donnell">
+<meta property="og:description" content="Data scientist building models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:image" content="https://hughod.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://hughod.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.post{max-width:660px}
+.post h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.03em;margin:8px 0 14px}
+.post .sub{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--dim);margin:0 0 40px}
+.post h3{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--hot);margin:40px 0 10px;font-weight:400}
+.post p,.post li{font-size:18px;line-height:1.65;margin:0 0 14px}
+.post ul{padding-left:20px;margin:0 0 14px}
+.post .yours{border-left:3px dashed var(--hot);padding:4px 0 4px 16px;opacity:.85;font-style:italic}
+.post .links{display:flex;gap:12px;flex-wrap:wrap;margin:44px 0 0}
+.post .back{margin:28px 0 0;font-family:"Space Mono",monospace;font-size:12px}.post .back a{color:var(--dim)}
+.post code{font-family:"Space Mono",monospace;font-size:15px}
+</style></head>
+<body>
+<div class="wrap"><nav><a class="mark" href="../index.html">hughod.com</a><span class="tabs"><a href="../index.html">home</a><a href="../projects.html" class="on">projects</a><a href="../about.html">about</a><a href="../contact.html">contact</a></span></nav></div>
+<main class="wrap">
+<article class="post pagehead">
+  <p class="label">Notes · Project 05</p>
+  <h2>Transfer value model</h2>
+  <p class="sub">Python · ML · in progress · 3 min read</p>
+
+  <h3>The question</h3>
+  <p>What is a Premier League forward actually worth? Transfermarkt publishes market values for every player. Can a model get close to them from stats alone?</p>
+
+  <h3>Why it's useful</h3>
+  <p>Clubs spend hundreds of millions on players. A stats-based estimate gives a second opinion on whether a fee is too high or a bargain.</p>
+
+  <h3>What I did</h3>
+  <ul><li>Collected 547 Premier League players: stats from FBref, plus wages, contracts and full value history from Transfermarkt.</li><li>Trained a blend of LightGBM and ridge regression on every position, then scored it on the 153 forwards and wingers.</li><li>Compared it with the simplest guess: the player's previous valuation.</li></ul>
+
+  <h3>What I found</h3>
+  <p>The model's typical miss is 12.3% of a player's value, against 18.2% for just using the last valuation. 82% of its estimates land within 25% of the real value.</p>
+
+  <h3>What surprised me</h3>
+  <p>How much a player's past valuations matter. Just using the last valuation already gets within about 18% on average. The stats bring that down to about 12%.</p>
+
+  <h3>What I'd do next</h3>
+  <p>Score it on midfielders and defenders too, not just forwards and wingers.</p>
+
+  <div class="btns" style="margin-top:44px"><a class="btn solid" href="https://hughod.com/transfer-value-model/">See the full project</a><a class="btn" href="https://github.com/HughFOD/transfer-value-model">Code on GitHub</a></div>
+  <p class="back"><a href="../projects.html">← All projects</a></p>
+</article>
+</main>
+<div class="wrap"><footer>© 2026 Hugh O'Donnell</footer></div>
+</body>
+</html>

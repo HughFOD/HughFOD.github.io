@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes: Natural Gas Storage Forecast · Hugh O'Donnell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=7">
+<meta name="description" content="Hugh O'Donnell, data scientist. Models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hugh O'Donnell">
+<meta property="og:title" content="Hugh O'Donnell">
+<meta property="og:description" content="Data scientist building models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:image" content="https://hughod.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://hughod.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.post{max-width:660px}
+.post h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.03em;margin:8px 0 14px}
+.post .sub{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--dim);margin:0 0 40px}
+.post h3{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--hot);margin:40px 0 10px;font-weight:400}
+.post p,.post li{font-size:18px;line-height:1.65;margin:0 0 14px}
+.post ul{padding-left:20px;margin:0 0 14px}
+.post .yours{border-left:3px dashed var(--hot);padding:4px 0 4px 16px;opacity:.85;font-style:italic}
+.post .links{display:flex;gap:12px;flex-wrap:wrap;margin:44px 0 0}
+.post .back{margin:28px 0 0;font-family:"Space Mono",monospace;font-size:12px}.post .back a{color:var(--dim)}
+.post code{font-family:"Space Mono",monospace;font-size:15px}
+</style></head>
+<body>
+<div class="wrap"><nav><a class="mark" href="../index.html">hughod.com</a><span class="tabs"><a href="../index.html">home</a><a href="../projects.html" class="on">projects</a><a href="../about.html">about</a><a href="../contact.html">contact</a></span></nav></div>
+<main class="wrap">
+<article class="post pagehead">
+  <p class="label">Notes · Project 03</p>
+  <h2>Natural Gas Storage Forecast</h2>
+  <p class="sub">Python · 2018–2026 data · 4 min read</p>
+
+  <h3>The question</h3>
+  <p>Every Thursday the US government reports how much natural gas went into or out of storage the week before. Traders watch it closely. Can you predict the number before it comes out, using only the weather?</p>
+
+  <h3>Why it's useful</h3>
+  <p>The weekly storage report moves natural gas prices. A good estimate before it comes out helps traders and utilities, and it shows how much of the market is really just weather.</p>
+
+  <h3>What I did</h3>
+  <ul><li>Turned daily temperatures in 17 cities into heating and cooling demand for each week.</li><li>Compared six methods, from the industry's standard 5-year average to ridge regression and gradient boosting.</li><li>Tested week by week: each forecast only used data from before that Thursday.</li><li>Made every modelling choice on 2018–2021, then scored it on 2022 to November 2026 (253 weeks).</li></ul>
+
+  <h3>What I found</h3>
+  <p>The best model misses by 13 billion cubic feet a week on average. The standard 5-year average misses by 31.</p><p>Winter is where weather helps most: 15 vs. 54. Cold snaps cause the big swings, and they show up in temperature data.</p><p>Simple beat fancy. Ridge regression beat gradient-boosted trees.</p><p>The biggest miss was Winter Storm Uri in February 2021, when frozen wells cut supply on top of the cold.</p>
+
+  <h3>What surprised me</h3>
+  <p>Simple beat fancy. Plain ridge regression was more accurate than gradient-boosted trees, both on the years used to choose it and on the years after.</p>
+
+  <h3>What I'd do next</h3>
+  <p>Add more than weather, like LNG exports and power demand, since those keep changing how the market behaves.</p>
+
+  <div class="btns" style="margin-top:44px"><a class="btn solid" href="https://hughod.com/gas-storage-nowcast/">See the full project</a><a class="btn" href="https://github.com/HughFOD/gas-storage-nowcast">Code on GitHub</a></div>
+  <p class="back"><a href="../projects.html">← All projects</a></p>
+</article>
+</main>
+<div class="wrap"><footer>© 2026 Hugh O'Donnell</footer></div>
+</body>
+</html>
