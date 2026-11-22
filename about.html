@@ -99,20 +99,31 @@
 <div class="wrap"><footer>© 2026 Hugh O'Donnell</footer></div>
 <script>
 (() => {
-  const svg = document.querySelector('.circuit'), tp = document.getElementById('lapText'), kerb = document.getElementById('kerb');
+  const svg = document.querySelector('.circuit'), kerb = document.getElementById('kerb');
   const cars = [...document.querySelectorAll('.lap .car')];
-  const base = tp.textContent, moms = [...document.querySelectorAll('.moment')], btns = [...document.querySelectorAll('.tracks button')];
+  let tp = document.getElementById('lapText'); const base = tp.textContent, moms = [...document.querySelectorAll('.moment')], btns = [...document.querySelectorAll('.tracks button')];
   const Ls = document.getElementById('silverstone').getTotalLength();
   let path, L, unit, off, name, dir = 1, pos = [0, -.012], clock = 0;
+  let tw = 0;
+  function textWidth(){
+    if (tw) return tw;
+    const m = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    m.textContent = base; m.setAttribute('visibility', 'hidden'); svg.appendChild(m);
+    try { tw = m.getBBox().width; } catch (e) {}
+    m.remove();
+    if (!tw) tw = base.length * 10.5;
+    return tw;
+  }
   function setTrack(n){
     name = n; path = document.getElementById(n); L = path.getTotalLength();
     svg.dataset.track = n;
     const tid = document.getElementById(n + '-text') ? n + '-text' : n; dir = tid === n ? 1 : -1;
-    for (const [el, id] of [[kerb, n], [tp, tid]]) { el.setAttribute('href', '#' + id); el.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + id); }
-    tp.textContent = base;
-    let u = 0; try { u = tp.getComputedTextLength(); } catch (e) {}
-    if (!u) u = base.length * 11;
-    const kk = Math.max(1, Math.round(L / u));
+    kerb.setAttribute('href', '#' + n); kerb.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + n);
+    // Safari/iOS doesn't re-lay out a textPath when its href changes, so build a fresh one each time
+    const nt = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');
+    nt.id = 'lapText'; nt.setAttribute('href', '#' + tid); nt.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + tid);
+    tp.replaceWith(nt); tp = nt;
+    const kk = Math.max(1, Math.round(L / textWidth()));
     tp.textContent = base.repeat(kk * 2);
     tp.setAttribute('textLength', (L * 2).toFixed(1)); tp.setAttribute('lengthAdjust', 'spacing');
     unit = L / kk; off = -unit; pos = [0, -.012];
@@ -133,6 +144,7 @@
   moms.forEach(mo => mo.addEventListener('click', e => { e.stopPropagation(); mo.classList.toggle('on'); }));
   document.addEventListener('click', () => moms.forEach(m => m.classList.remove('on')));
   setTrack('silverstone');
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { tw = 0; setTrack(name); });
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let last = performance.now(), boost = 1;
   svg.addEventListener('pointerenter', () => boost = 3); svg.addEventListener('pointerleave', () => boost = 1);
