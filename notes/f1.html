@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes: F1 Tyre Degradation · Hugh O'Donnell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=11">
+<meta name="description" content="Hugh O'Donnell, data scientist. Models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hugh O'Donnell">
+<meta property="og:title" content="Hugh O'Donnell">
+<meta property="og:description" content="Data scientist building models on soccer betting, baseball umpires, river flows and natural gas.">
+<meta property="og:image" content="https://hughod.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://hughod.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.post{max-width:660px}
+.post h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.03em;margin:8px 0 14px}
+.post .sub{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--dim);margin:0 0 40px}
+.post h3{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--hot);margin:40px 0 10px;font-weight:400}
+.post p,.post li{font-size:18px;line-height:1.65;margin:0 0 14px}
+.post ul{padding-left:20px;margin:0 0 14px}
+.post .yours{border-left:3px dashed var(--hot);padding:4px 0 4px 16px;opacity:.85;font-style:italic}
+.post .links{display:flex;gap:12px;flex-wrap:wrap;margin:44px 0 0}
+.post .back{margin:28px 0 0;font-family:"Space Mono",monospace;font-size:12px}.post .back a{color:var(--dim)}
+.post code{font-family:"Space Mono",monospace;font-size:15px}
+</style></head>
+<body>
+<div class="wrap"><nav><a class="mark" href="../index.html">hughod.com</a><span class="tabs"><a href="../index.html">home</a><a href="../projects.html" class="on">projects</a><a href="../about.html">about</a><a href="../contact.html">contact</a></span></nav></div>
+<main class="wrap">
+<article class="post pagehead">
+  <p class="label">Notes · Project 04</p>
+  <h2>F1 Tyre Degradation</h2>
+  <p class="sub">Python · 2018–2026 data · 4 min read</p>
+
+  <h3>The question</h3>
+  <p>Every lap, an F1 car gets lighter as fuel burns, which makes it faster, while its tyres wear, which makes it slower. Can you untangle the two, forecast how fast the tyres will wear before a race, and turn that into a good pit plan?</p>
+
+  <h3>Why it's useful</h3>
+  <p>Tyre wear decides when teams pit and which tyres they use, and that often decides the race. A forecast before the race is what a pit strategy is built on.</p>
+
+  <h3>What I did</h3>
+  <ul><li>Collected lap-by-lap timing for 192 Grands Prix since 2018 (212,182 laps), plus 5,369 long runs from practice and sprints.</li><li>Kept only laps that show real pace: no safety cars, pit laps, wet tyres or laps stuck in traffic.</li><li>Fitted one equation per race that splits each lap into driver pace, fuel burn, tyre compound and tyre wear. Pit stops reset tyre age but not fuel, which is what lets the two be told apart.</li><li>Forecast each race's wear from earlier races at that track, then adjusted it using that weekend's practice long runs.</li><li>Chose every setting on 2023 only, then tested on 2024 to November 2026.</li></ul>
+
+  <h3>What I found</h3>
+  <p>The forecast gets within 0.95 s of how much time a 20-lap stint loses, against 1.46 s if tyre wear is ignored, across 1,635 stints.</p>
+  <p>Pre-race pit plans pick the right number of stops in 84% of dry races, judged against the best plan in hindsight.</p>
+  <p>Most of what's left can't be forecast. Stints that should behave the same still differ by about 0.6 s, because of how hard drivers push, traffic and tyre management.</p>
+
+  <h3>What surprised me</h3>
+  <p>The tyre choice. The pre-race plans start on softs 75% of the time, but winners only do 15% of the time. In race trim, new softs, mediums and hards come out within about a tenth of a second of each other, so the model sees little reason to avoid softs. Teams know softs also grain, overheat and fall off a cliff, and lap times alone don't show that.</p>
+
+  <h3>What I'd do next</h3>
+  <p>I tested 12 ideas to improve it and kept 2: adding the 2018 season, and using practice long runs. Next would be modelling track position and undercuts, so plans are judged on finishing position rather than raw race time.</p>
+
+  <div class="btns" style="margin-top:44px"><a class="btn solid" href="https://hughod.com/f1-tyre-degradation/">See the full project</a><a class="btn" href="https://github.com/HughFOD/f1-tyre-degradation">Code on GitHub</a></div>
+  <p class="back"><a href="../projects.html">← All projects</a></p>
+</article>
+</main>
+<div class="wrap"><footer>© 2026 Hugh O'Donnell</footer></div>
+</body>
+</html>
